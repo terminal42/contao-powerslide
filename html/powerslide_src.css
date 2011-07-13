@@ -1,5 +1,6 @@
 .ce_powerslide {
 	position: relative;
+	overflow: hidden;
 }
 
 .ce_powerslide_button {
@@ -21,14 +22,11 @@
 }
 
 .ce_powerslide_container {
-	position: relative;
 	overflow: auto;
 }
 
 .ce_powerslide_section {
 	display: block;
-	width: 964px;
-	height: 427px;
 }
 
 /* controls styling */

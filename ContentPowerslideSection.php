@@ -72,10 +72,21 @@ class ContentPowerslideSection extends ContentElement
 	{
 		$this->Template->first = false;
 		$this->Template->last = false;
+		$this->Template->closeDiv = false;
+		$this->Template->closeLink = false;
+		$this->Template->openLink;
+		$this->Template->target = '';
+		$this->Template->href = $this->imageUrl;
+		$this->Template->width = $GLOBALS['POWERSLIDE'][$this->pid]['width'];
+		$this->Template->height = $GLOBALS['POWERSLIDE'][$this->pid]['height'];
 		
 		if ($GLOBALS['POWERSLIDE'][$this->pid]['sections'] == 1)
 		{
 			$this->Template->first = true;
+		}
+		else
+		{
+			$this->Template->closeLink = $GLOBALS['POWERSLIDE'][$this->pid]['sectionLink'] ? true : false;
 		}
 		
 		if ($GLOBALS['POWERSLIDE'][$this->pid]['sections'] == $GLOBALS['POWERSLIDE'][$this->pid]['total'])
@@ -87,6 +98,16 @@ class ContentPowerslideSection extends ContentElement
 		{
 			$this->Template->background = ('background-image:url(' . $this->powerslide_background . ');');
 		}
+		
+		// Override the link target
+		if ($this->target)
+		{
+			global $objPage;
+			$this->Template->target = ($objPage->outputFormat == 'html5') ? ' target="_blank"' : ' onclick="window.open(this.href); return false;"';
+		}
+		
+		$GLOBALS['POWERSLIDE'][$this->pid]['sectionLink'] = $this->imageUrl == '' ? false : true;
+		$this->Template->openLink = $GLOBALS['POWERSLIDE'][$this->pid]['sectionLink'];
 	}
 }
 

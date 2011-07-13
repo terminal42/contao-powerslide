@@ -74,7 +74,13 @@ class ContentPowerslideSetup extends ContentElement
 		$GLOBALS['POWERSLIDE'][$this->pid]['transition'] = $this->powerslide_transition;
 		$GLOBALS['POWERSLIDE'][$this->pid]['ease'] = $this->powerslide_ease;
 		
-		$this->Template->buttons = $GLOBALS['POWERSLIDE'][$this->pid]['buttons'];
+		$this->Template->buttons = $GLOBALS['POWERSLIDE'][$this->pid]['buttons'] ? true : false;
+		
+		$arrSize = deserialize($this->powerslide_size, true);
+		$GLOBALS['POWERSLIDE'][$this->pid]['width'] = (int)$arrSize[0];
+		$GLOBALS['POWERSLIDE'][$this->pid]['height'] = (int)$arrSize[1];
+		$this->Template->width = $GLOBALS['POWERSLIDE'][$this->pid]['width'];
+		$this->Template->height = $GLOBALS['POWERSLIDE'][$this->pid]['height'];
 	}
 }
 

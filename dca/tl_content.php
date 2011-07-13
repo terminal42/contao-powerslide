@@ -31,9 +31,9 @@
 /**
  * Palettes
  */
-$GLOBALS['TL_DCA']['tl_content']['palettes']['powerslide_setup']		= '{type_legend},type;{config_legend},powerslide_orientation,powerslide_fade,powerslide_interval,powerslide_speed,powerslide_transition,powerslide_ease,powerslide_buttons;{protected_legend:hide},protected;{expert_legend:hide},guests,cssID,space';
+$GLOBALS['TL_DCA']['tl_content']['palettes']['powerslide_setup']		= '{type_legend},type;{powerslide_legend},powerslide_orientation,powerslide_fade,powerslide_interval,powerslide_speed,powerslide_transition,powerslide_ease,powerslide_size,powerslide_buttons;{protected_legend:hide},protected;{expert_legend:hide},guests,cssID,space';
 $GLOBALS['TL_DCA']['tl_content']['palettes']['powerslide_preview']		= '{type_legend},type,headline;{text_legend},text;{image_legend},addImage;{protected_legend:hide},protected;{expert_legend:hide},guests,cssID,space';
-$GLOBALS['TL_DCA']['tl_content']['palettes']['powerslide_section']		= '{type_legend},type;{image_legend},powerslide_background;{protected_legend:hide},protected;{expert_legend:hide},guests,cssID,space';
+$GLOBALS['TL_DCA']['tl_content']['palettes']['powerslide_section']		= '{type_legend},type;{image_legend},powerslide_background;{link_legend},imageUrl,target;{protected_legend:hide},protected;{expert_legend:hide},guests,cssID,space';
 $GLOBALS['TL_DCA']['tl_content']['palettes']['powerslide_terminate']	= '{type_legend},type;{protected_legend:hide},protected;{expert_legend:hide},guests,cssID,space';
 
 
@@ -94,12 +94,20 @@ $GLOBALS['TL_DCA']['tl_content']['fields']['powerslide_speed'] = array
 	'eval'				=> array('mandatory'=>true, 'maxlength'=>6, 'rgpx'=>'digit', 'tl_class'=>'w50'),
 );
 
+$GLOBALS['TL_DCA']['tl_content']['fields']['powerslide_size'] = array
+(
+	'label'				=> &$GLOBALS['TL_LANG']['tl_content']['powerslide_size'],
+	'exclude'			=> true,
+	'inputType'			=> 'text',
+	'eval'				=> array('mandatory'=>true, 'multiple'=>true, 'size'=>2, 'maxlength'=>6, 'rgpx'=>'digit', 'tl_class'=>'w50'),
+);
+
 $GLOBALS['TL_DCA']['tl_content']['fields']['powerslide_buttons'] = array
 (
 	'label'				=> &$GLOBALS['TL_LANG']['tl_content']['powerslide_buttons'],
 	'exclude'			=> true,
 	'inputType'			=> 'checkbox',
-	'eval'				=> array('tl_class'=>'w50'),
+	'eval'				=> array('tl_class'=>'w50 m12'),
 );
 
 $GLOBALS['TL_DCA']['tl_content']['fields']['powerslide_background'] = array

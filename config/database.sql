@@ -19,6 +19,7 @@ CREATE TABLE `tl_content` (
   `powerslide_transition` varchar(8) NOT NULL default '',
   `powerslide_ease` varchar(8) NOT NULL default '',
   `powerslide_buttons` char(1) NOT NULL default '',
+  `powerslide_size` varchar(128) NOT NULL default '',
   `powerslide_background` varchar(255) NOT NULL default '',
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 

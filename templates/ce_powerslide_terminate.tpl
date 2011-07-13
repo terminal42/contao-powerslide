@@ -1,10 +1,11 @@
-</div></div></div>
+<?php if ($this->closeLink): ?></a><?php else: ?></div><?php endif; ?>
+</div></div>
 
 <script type="text/javascript">
 <!--//--><![CDATA[//><!--
-var powerslide;
+var powerslide<?php echo $this->sliderId; ?>;
 window.addEvent('domready', function() {
-	powerslide = new PowerSlide({
+	powerslide<?php echo $this->sliderId; ?> = new PowerSlide({
 		container: document.getElement('#<?php echo $this->articleId; ?> .ce_powerslide_container'),
 		items: document.getElements('#<?php echo $this->articleId; ?> .ce_powerslide_section'),
 		orientation: '<?php echo $this->orientation; ?>',
@@ -17,19 +18,19 @@ window.addEvent('domready', function() {
 		navItems: document.getElements('#<?php echo $this->articleId; ?> .ce_powerslide_preview'),<?php endif; ?>
 		
 	});
-	powerslide.start();
+	powerslide<?php echo $this->sliderId; ?>.start();
 	
 	new MooSwipe(document.getElement('#<?php echo $this->articleId; ?> .ce_powerslide_container'), {
 		onSwipeLeft: function() {
-			if (powerslide.isSliding == 0) {
-				powerslide.direction = 1;
-				powerslide.slideIt();
+			if (powerslide<?php echo $this->sliderId; ?>.isSliding == 0) {
+				powerslide<?php echo $this->sliderId; ?>.direction = 1;
+				powerslide<?php echo $this->sliderId; ?>.slideIt();
 			}
 		},
 		onSwipeRight: function() {
-			if (powerslide.isSliding == 0) {
-				powerslide.direction = 0;
-				powerslide.slideIt();
+			if (powerslide<?php echo $this->sliderId; ?>.isSliding == 0) {
+				powerslide<?php echo $this->sliderId; ?>.direction = 0;
+				powerslide<?php echo $this->sliderId; ?>.slideIt();
 			}
 		}
 	});

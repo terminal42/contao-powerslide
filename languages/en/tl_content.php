@@ -37,6 +37,7 @@ $GLOBALS['TL_LANG']['tl_content']['powerslide_interval']	= array('Interval', 'En
 $GLOBALS['TL_LANG']['tl_content']['powerslide_speed']		= array('Speed', 'Enter the number of milliseconds a transition will take. 1000 is a good value.');
 $GLOBALS['TL_LANG']['tl_content']['powerslide_transition']	= array('Transition', 'Select a transition type.');
 $GLOBALS['TL_LANG']['tl_content']['powerslide_ease']		= array('Ease', 'Select ease for the transition.');
+$GLOBALS['TL_LANG']['tl_content']['powerslide_size']		= array('Slider dimensions', 'Please enter the width & height of the slider container.');
 $GLOBALS['TL_LANG']['tl_content']['powerslide_buttons']		= array('Show buttons', 'Check here to enable previous/next buttons.');
 $GLOBALS['TL_LANG']['tl_content']['powerslide_background']	= array('Background image', 'Each section can have a background image. Make sure it fits the slider!');
 
@@ -47,4 +48,10 @@ $GLOBALS['TL_LANG']['tl_content']['powerslide_background']	= array('Background i
 $GLOBALS['TL_LANG']['tl_content']['powerslide_orientation']['right-to-left']	= 'Horizontal (Right to Left)';
 $GLOBALS['TL_LANG']['tl_content']['powerslide_orientation']['bottom-to-top']	= 'Vertical (Bottom to Top)';
 $GLOBALS['TL_LANG']['tl_content']['powerslide_orientation']['none']				= 'None';
+
+
+/**
+ * Legends
+ */
+$GLOBALS['TL_LANG']['tl_content']['powerslide_legend']		= 'Powerslide Configuration';
 
