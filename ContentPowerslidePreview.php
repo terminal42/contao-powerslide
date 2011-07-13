@@ -30,7 +30,14 @@
 
 
 class ContentPowerslidePreview extends ContentText
-{	
+{
+
+	/**
+	 * Template
+	 * @var string
+	 */
+	protected $strTemplate = 'ce_powerslide_preview';
+	
 	
 	public function generate()
 	{
@@ -71,6 +78,22 @@ class ContentPowerslidePreview extends ContentText
 			$cssId = $this->cssID;
 			$cssId[1] = trim($cssId[1] . ' last');
 			$this->cssID = $cssId;
+		}
+		
+		$this->Template->openLink = false;
+		$this->Template->powerslide_target = '';
+		
+		// Preview link is only allowed if the preview event is on mouseover
+		if ($GLOBALS['POWERSLIDE'][$this->pid]['navEvent'] == 'mouseenter' && $this->powerslide_url != '')
+		{
+			$this->Template->openLink = true;
+			
+			// Override the link target
+			if ($this->powerslide_target)
+			{
+				global $objPage;
+				$this->Template->powerslide_target = ($objPage->outputFormat == 'html5') ? ' target="_blank"' : ' onclick="window.open(this.href); return false;"';
+			}
 		}
 	}
 }

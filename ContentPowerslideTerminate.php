@@ -61,24 +61,22 @@ class ContentPowerslideTerminate extends ContentElement
 		$this->Template->transition = $GLOBALS['POWERSLIDE'][$this->pid]['transition'] . ($GLOBALS['POWERSLIDE'][$this->pid]['ease'] ? (':'.$GLOBALS['POWERSLIDE'][$this->pid]['ease']) : '');
 		$this->Template->interval = $GLOBALS['POWERSLIDE'][$this->pid]['interval'];
 		$this->Template->speed = $GLOBALS['POWERSLIDE'][$this->pid]['speed'];
+		$this->Template->navEvent = $GLOBALS['POWERSLIDE'][$this->pid]['navEvent'];
 		$this->Template->sliderId = $this->pid;
 		
 		switch( $GLOBALS['POWERSLIDE'][$this->pid]['orientation'] )
 		{
-			case 'none':
+			case 'fade':
 				$this->Template->orientation = 'none';
-				$this->Template->fade = 'false';
 				break;
 				
 			case 'bottom-to-top':
 				$this->Template->orientation = 'vertical';
-				$this->Template->fade = $GLOBALS['POWERSLIDE'][$this->pid]['fade'] ? 'true' : 'false';
 				break;
 				
 			case 'right-to-left':
 			default:
 				$this->Template->orientation = 'horizontal';
-				$this->Template->fade = $GLOBALS['POWERSLIDE'][$this->pid]['powerslide_fade'] ? 'true' : 'false';
 				break;
 		}
 	}

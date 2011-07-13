@@ -55,7 +55,7 @@ class ContentPowerslideSection extends ContentElement
 		// Start the powerslide container
 		if ($GLOBALS['POWERSLIDE'][$this->pid]['sections'] == 1)
 		{
-			$strBuffer = '<div class="ce_powerslide_container">' . $strBuffer;
+			$strBuffer = '<div class="ce_powerslide_container" style="width:'.$GLOBALS['POWERSLIDE'][$this->pid]['width'].'px;height:'.$GLOBALS['POWERSLIDE'][$this->pid]['height'].'px">' . $strBuffer;
 		}
 		
 		// Close the preview ul/li
@@ -72,11 +72,10 @@ class ContentPowerslideSection extends ContentElement
 	{
 		$this->Template->first = false;
 		$this->Template->last = false;
-		$this->Template->closeDiv = false;
 		$this->Template->closeLink = false;
-		$this->Template->openLink;
+		$this->Template->openLink = false;
 		$this->Template->target = '';
-		$this->Template->href = $this->imageUrl;
+		$this->Template->href = $this->powerslide_url;
 		$this->Template->width = $GLOBALS['POWERSLIDE'][$this->pid]['width'];
 		$this->Template->height = $GLOBALS['POWERSLIDE'][$this->pid]['height'];
 		
@@ -100,13 +99,13 @@ class ContentPowerslideSection extends ContentElement
 		}
 		
 		// Override the link target
-		if ($this->target)
+		if ($this->powerslide_target)
 		{
 			global $objPage;
 			$this->Template->target = ($objPage->outputFormat == 'html5') ? ' target="_blank"' : ' onclick="window.open(this.href); return false;"';
 		}
 		
-		$GLOBALS['POWERSLIDE'][$this->pid]['sectionLink'] = $this->imageUrl == '' ? false : true;
+		$GLOBALS['POWERSLIDE'][$this->pid]['sectionLink'] = $this->powerslide_url == '' ? false : true;
 		$this->Template->openLink = $GLOBALS['POWERSLIDE'][$this->pid]['sectionLink'];
 	}
 }

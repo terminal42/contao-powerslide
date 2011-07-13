@@ -29,33 +29,39 @@
 
 
 /**
+ * Config
+ */
+$GLOBALS['TL_DCA']['tl_content']['config']['onload_callback'][] = array('tl_content_powerslide', 'hidePreviewUrl');
+
+
+/**
  * Palettes
  */
-$GLOBALS['TL_DCA']['tl_content']['palettes']['powerslide_setup']		= '{type_legend},type;{powerslide_legend},powerslide_orientation,powerslide_fade,powerslide_interval,powerslide_speed,powerslide_transition,powerslide_ease,powerslide_size,powerslide_buttons;{protected_legend:hide},protected;{expert_legend:hide},guests,cssID,space';
-$GLOBALS['TL_DCA']['tl_content']['palettes']['powerslide_preview']		= '{type_legend},type,headline;{text_legend},text;{image_legend},addImage;{protected_legend:hide},protected;{expert_legend:hide},guests,cssID,space';
-$GLOBALS['TL_DCA']['tl_content']['palettes']['powerslide_section']		= '{type_legend},type;{image_legend},powerslide_background;{link_legend},imageUrl,target;{protected_legend:hide},protected;{expert_legend:hide},guests,cssID,space';
+$GLOBALS['TL_DCA']['tl_content']['palettes']['powerslide_setup']		= '{type_legend},type;{powerslide_legend},powerslide_size,powerslide_orientation,powerslide_interval,powerslide_speed,powerslide_transition,powerslide_ease,powerslide_navEvent,powerslide_buttons;{protected_legend:hide},protected;{expert_legend:hide},guests,cssID,space';
+$GLOBALS['TL_DCA']['tl_content']['palettes']['powerslide_preview']		= '{type_legend},type,headline;{text_legend},text;{image_legend},addImage;{link_legend:hide},powerslide_url,powerslide_target;{protected_legend:hide},protected;{expert_legend:hide},guests,cssID,space';
+$GLOBALS['TL_DCA']['tl_content']['palettes']['powerslide_section']		= '{type_legend},type;{image_legend},powerslide_background;{link_legend:hide},powerslide_url,powerslide_target;{protected_legend:hide},protected;{expert_legend:hide},guests,cssID,space';
 $GLOBALS['TL_DCA']['tl_content']['palettes']['powerslide_terminate']	= '{type_legend},type;{protected_legend:hide},protected;{expert_legend:hide},guests,cssID,space';
 
 
 /**
  * Fields
  */
+$GLOBALS['TL_DCA']['tl_content']['fields']['powerslide_size'] = array
+(
+	'label'				=> &$GLOBALS['TL_LANG']['tl_content']['powerslide_size'],
+	'exclude'			=> true,
+	'inputType'			=> 'text',
+	'eval'				=> array('mandatory'=>true, 'multiple'=>true, 'size'=>2, 'maxlength'=>6, 'rgpx'=>'digit', 'tl_class'=>'w50'),
+);
+
 $GLOBALS['TL_DCA']['tl_content']['fields']['powerslide_orientation'] = array
 (
 	'label'				=> &$GLOBALS['TL_LANG']['tl_content']['powerslide_orientation'],
 	'exclude'			=> true,
 	'inputType'			=> 'select',
-	'options'			=> array('right-to-left', 'bottom-to-top', 'none'),
+	'options'			=> array('right-to-left', 'bottom-to-top', 'fade'),
 	'reference'			=> &$GLOBALS['TL_LANG']['tl_content']['powerslide_orientation'],
 	'eval'				=> array('mandatory'=>true, 'tl_class'=>'w50'),
-);
-
-$GLOBALS['TL_DCA']['tl_content']['fields']['powerslide_fade'] = array
-(
-	'label'				=> &$GLOBALS['TL_LANG']['tl_content']['powerslide_fade'],
-	'exclude'			=> true,
-	'inputType'			=> 'checkbox',
-	'eval'				=> array('tl_class'=>'w50 m12'),
 );
 
 $GLOBALS['TL_DCA']['tl_content']['fields']['powerslide_transition'] = array
@@ -94,12 +100,15 @@ $GLOBALS['TL_DCA']['tl_content']['fields']['powerslide_speed'] = array
 	'eval'				=> array('mandatory'=>true, 'maxlength'=>6, 'rgpx'=>'digit', 'tl_class'=>'w50'),
 );
 
-$GLOBALS['TL_DCA']['tl_content']['fields']['powerslide_size'] = array
+$GLOBALS['TL_DCA']['tl_content']['fields']['powerslide_navEvent'] = array
 (
-	'label'				=> &$GLOBALS['TL_LANG']['tl_content']['powerslide_size'],
+	'label'				=> &$GLOBALS['TL_LANG']['tl_content']['powerslide_navEvent'],
 	'exclude'			=> true,
-	'inputType'			=> 'text',
-	'eval'				=> array('mandatory'=>true, 'multiple'=>true, 'size'=>2, 'maxlength'=>6, 'rgpx'=>'digit', 'tl_class'=>'w50'),
+	'default'			=> 'click',
+	'inputType'			=> 'radio',
+	'options'			=> array('click', 'mouseenter'),
+	'reference'			=> &$GLOBALS['TL_LANG']['tl_content']['powerslide_navEvent'],
+	'eval'				=> array('mandatory'=>true, 'tl_class'=>'w50'),
 );
 
 $GLOBALS['TL_DCA']['tl_content']['fields']['powerslide_buttons'] = array
@@ -117,4 +126,43 @@ $GLOBALS['TL_DCA']['tl_content']['fields']['powerslide_background'] = array
 	'inputType'			=> 'fileTree',
 	'eval'				=> array('fieldType'=>'radio', 'files'=>true, 'filesOnly'=>true, 'extensions'=>'png,gif,jpg,jpeg', 'tl_class'=>'clr'),
 );
+
+$GLOBALS['TL_DCA']['tl_content']['fields']['powerslide_url'] = array
+(
+	'label'                   => &$GLOBALS['TL_LANG']['MSC']['url'],
+	'exclude'                 => true,
+	'search'                  => true,
+	'inputType'               => 'text',
+	'eval'                    => array('rgxp'=>'url', 'decodeEntities'=>true, 'maxlength'=>255, 'tl_class'=>'w50 wizard'),
+	'wizard' => array
+	(
+		array('tl_content', 'pagePicker')
+	),
+);
+
+$GLOBALS['TL_DCA']['tl_content']['fields']['powerslide_target'] = array
+(
+	'label'                   => &$GLOBALS['TL_LANG']['MSC']['target'],
+	'exclude'                 => true,
+	'inputType'               => 'checkbox',
+	'eval'                    => array('tl_class'=>'w50 m12')
+);
+
+
+class tl_content_powerslide extends Backend
+{
+	
+	/**
+	 * Hide the URL element if the preview event is "click"
+	 */
+	public function hidePreviewUrl($dc)
+	{
+		$objSetup = $this->Database->execute("SELECT * FROM tl_content WHERE type='powerslide_setup' AND pid=(SELECT pid FROM tl_content WHERE id={$dc->id})");
+		
+		if ($objSetup->numRows && $objSetup->powerslide_navEvent == 'click')
+		{
+			$GLOBALS['TL_DCA']['tl_content']['palettes']['powerslide_preview'] = str_replace('{link_legend:hide},powerslide_url,powerslide_target;', '', $GLOBALS['TL_DCA']['tl_content']['palettes']['powerslide_preview']);
+		}
+	}
+}
 

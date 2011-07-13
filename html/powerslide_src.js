@@ -25,6 +25,7 @@ var PowerSlide = new Class({
 		items:  null, 					//Array of elements for sliding
 		itemNum: 0,						//Current item number
 		navItems: null,
+		navEvent: 'click',
 		numNavActive: false,			//Whether or not the number navigation will be used
 		numNavHolder: null,			    //Element that holds the number navigation
 		playBtn: null,					//Play (and pause) button element
@@ -147,10 +148,11 @@ var PowerSlide = new Class({
 					initNum.addClass('active');
 				}
 			}
+			
 			//end if num nav 'active'
 			// -- Navigation items setup
 			else if(self.options.navItems && self.options.navItems[i]){self.options.navItems[i]
-				self.options.navItems[i].addEvent('click', function(){
+				self.options.navItems[i].addEvent(self.options.navEvent, function(){
 					self.numPress(i);
 				});
 			}

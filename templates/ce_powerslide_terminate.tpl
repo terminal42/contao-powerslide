@@ -11,11 +11,11 @@ window.addEvent('domready', function() {
 		orientation: '<?php echo $this->orientation; ?>',
 		slideTimer: <?php echo $this->interval; ?>,
 		transitionTime: <?php echo $this->speed; ?>,
-		transitionType: '<?php echo $this->transition; ?>',
-		fade: <?php echo $this->fade; ?><?php if($this->buttons): ?>,
+		transitionType: '<?php echo $this->transition; ?>'<?php if($this->buttons): ?>,
 		prevBtn: document.getElement('#<?php echo $this->articleId; ?> .ce_powerslide_previous'),
 		nextBtn: document.getElement('#<?php echo $this->articleId; ?> .ce_powerslide_next')<?php endif; ?><?php if($this->previews): ?>,
-		navItems: document.getElements('#<?php echo $this->articleId; ?> .ce_powerslide_preview'),<?php endif; ?>
+		navItems: document.getElements('#<?php echo $this->articleId; ?> .ce_powerslide_preview'),
+		navEvent: '<?php echo $this->navEvent; ?>'<?php endif; ?>
 		
 	});
 	powerslide<?php echo $this->sliderId; ?>.start();

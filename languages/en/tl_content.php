@@ -32,7 +32,6 @@
  * Fields
  */
 $GLOBALS['TL_LANG']['tl_content']['powerslide_orientation']	= array('Orientation', 'Select how to scroll the slider. None will create a fading in/out transition.');
-$GLOBALS['TL_LANG']['tl_content']['powerslide_fade']		= array('Fade', 'If checked, will fade the outgoing slide. Only used if orientation is not "None"');
 $GLOBALS['TL_LANG']['tl_content']['powerslide_interval']	= array('Interval', 'Enter the number of milliseconds between each transition. 6000 is a good value.');
 $GLOBALS['TL_LANG']['tl_content']['powerslide_speed']		= array('Speed', 'Enter the number of milliseconds a transition will take. 1000 is a good value.');
 $GLOBALS['TL_LANG']['tl_content']['powerslide_transition']	= array('Transition', 'Select a transition type.');
@@ -47,7 +46,9 @@ $GLOBALS['TL_LANG']['tl_content']['powerslide_background']	= array('Background i
  */
 $GLOBALS['TL_LANG']['tl_content']['powerslide_orientation']['right-to-left']	= 'Horizontal (Right to Left)';
 $GLOBALS['TL_LANG']['tl_content']['powerslide_orientation']['bottom-to-top']	= 'Vertical (Bottom to Top)';
-$GLOBALS['TL_LANG']['tl_content']['powerslide_orientation']['none']				= 'None';
+$GLOBALS['TL_LANG']['tl_content']['powerslide_orientation']['fade']				= 'Fade';
+$GLOBALS['TL_LANG']['tl_content']['powerslide_navEvent']['click']				= 'On click';
+$GLOBALS['TL_LANG']['tl_content']['powerslide_navEvent']['mouseenter']			= 'On mouse hover';
 
 
 /**
