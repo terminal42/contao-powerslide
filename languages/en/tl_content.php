@@ -1,0 +1,50 @@
+<?php if (!defined('TL_ROOT')) die('You cannot access this file directly!');
+
+/**
+ * Contao Open Source CMS
+ * Copyright (C) 2005-2011 Leo Feyer
+ *
+ * Formerly known as TYPOlight Open Source CMS.
+ *
+ * This program is free software: you can redistribute it and/or
+ * modify it under the terms of the GNU Lesser General Public
+ * License as published by the Free Software Foundation, either
+ * version 3 of the License, or (at your option) any later version.
+ * 
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU
+ * Lesser General Public License for more details.
+ * 
+ * You should have received a copy of the GNU Lesser General Public
+ * License along with this program. If not, please visit the Free
+ * Software Foundation website at <http://www.gnu.org/licenses/>.
+ *
+ * PHP version 5
+ * @copyright  Andreas Schempp 2011
+ * @author     Andreas Schempp <andreas@schempp.ch>
+ * @license    http://opensource.org/licenses/lgpl-3.0.html
+ * @version    $Id$
+ */
+
+
+/**
+ * Fields
+ */
+$GLOBALS['TL_LANG']['tl_content']['powerslide_orientation']	= array('Orientation', 'Select how to scroll the slider. None will create a fading in/out transition.');
+$GLOBALS['TL_LANG']['tl_content']['powerslide_fade']		= array('Fade', 'If checked, will fade the outgoing slide. Only used if orientation is not "None"');
+$GLOBALS['TL_LANG']['tl_content']['powerslide_interval']	= array('Interval', 'Enter the number of milliseconds between each transition. 6000 is a good value.');
+$GLOBALS['TL_LANG']['tl_content']['powerslide_speed']		= array('Speed', 'Enter the number of milliseconds a transition will take. 1000 is a good value.');
+$GLOBALS['TL_LANG']['tl_content']['powerslide_transition']	= array('Transition', 'Select a transition type.');
+$GLOBALS['TL_LANG']['tl_content']['powerslide_ease']		= array('Ease', 'Select ease for the transition.');
+$GLOBALS['TL_LANG']['tl_content']['powerslide_buttons']		= array('Show buttons', 'Check here to enable previous/next buttons.');
+$GLOBALS['TL_LANG']['tl_content']['powerslide_background']	= array('Background image', 'Each section can have a background image. Make sure it fits the slider!');
+
+
+/**
+ * Reference
+ */
+$GLOBALS['TL_LANG']['tl_content']['powerslide_orientation']['right-to-left']	= 'Horizontal (Right to Left)';
+$GLOBALS['TL_LANG']['tl_content']['powerslide_orientation']['bottom-to-top']	= 'Vertical (Bottom to Top)';
+$GLOBALS['TL_LANG']['tl_content']['powerslide_orientation']['none']				= 'None';
+
