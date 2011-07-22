@@ -58,6 +58,7 @@ class ContentPowerslideTerminate extends ContentElement
 		$this->Template->previews = $GLOBALS['POWERSLIDE'][$this->pid]['previews'] > 0 ? true : false;
 		$this->Template->articleId = $GLOBALS['POWERSLIDE'][$this->pid]['id'];
 		$this->Template->buttons = $GLOBALS['POWERSLIDE'][$this->pid]['buttons'];
+		$this->Template->position = $GLOBALS['POWERSLIDE'][$this->pid]['position'];
 		$this->Template->transition = $GLOBALS['POWERSLIDE'][$this->pid]['transition'] . ($GLOBALS['POWERSLIDE'][$this->pid]['ease'] ? (':'.$GLOBALS['POWERSLIDE'][$this->pid]['ease']) : '');
 		$this->Template->interval = $GLOBALS['POWERSLIDE'][$this->pid]['interval'];
 		$this->Template->speed = $GLOBALS['POWERSLIDE'][$this->pid]['speed'];

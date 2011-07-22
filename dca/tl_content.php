@@ -37,7 +37,7 @@ $GLOBALS['TL_DCA']['tl_content']['config']['onload_callback'][] = array('tl_cont
 /**
  * Palettes
  */
-$GLOBALS['TL_DCA']['tl_content']['palettes']['powerslide_setup']		= '{type_legend},type;{powerslide_legend},powerslide_size,powerslide_orientation,powerslide_interval,powerslide_speed,powerslide_transition,powerslide_ease,powerslide_navEvent,powerslide_buttons;{protected_legend:hide},protected;{expert_legend:hide},guests,cssID,space';
+$GLOBALS['TL_DCA']['tl_content']['palettes']['powerslide_setup']		= '{type_legend},type;{powerslide_legend},powerslide_size,powerslide_orientation,powerslide_interval,powerslide_speed,powerslide_transition,powerslide_ease,powerslide_navEvent,powerslide_buttons,powerslide_position;{protected_legend:hide},protected;{expert_legend:hide},guests,cssID,space';
 $GLOBALS['TL_DCA']['tl_content']['palettes']['powerslide_preview']		= '{type_legend},type,headline;{text_legend},text;{image_legend},addImage;{link_legend:hide},powerslide_url,powerslide_target;{protected_legend:hide},protected;{expert_legend:hide},guests,cssID,space';
 $GLOBALS['TL_DCA']['tl_content']['palettes']['powerslide_section']		= '{type_legend},type;{image_legend},powerslide_background;{link_legend:hide},powerslide_url,powerslide_target;{protected_legend:hide},protected;{expert_legend:hide},guests,cssID,space';
 $GLOBALS['TL_DCA']['tl_content']['palettes']['powerslide_terminate']	= '{type_legend},type;{protected_legend:hide},protected;{expert_legend:hide},guests,cssID,space';
@@ -116,7 +116,15 @@ $GLOBALS['TL_DCA']['tl_content']['fields']['powerslide_buttons'] = array
 	'label'				=> &$GLOBALS['TL_LANG']['tl_content']['powerslide_buttons'],
 	'exclude'			=> true,
 	'inputType'			=> 'checkbox',
-	'eval'				=> array('tl_class'=>'w50 m12'),
+	'eval'				=> array('tl_class'=>'w50'),
+);
+
+$GLOBALS['TL_DCA']['tl_content']['fields']['powerslide_position'] = array
+(
+	'label'				=> &$GLOBALS['TL_LANG']['tl_content']['powerslide_position'],
+	'exclude'			=> true,
+	'inputType'			=> 'checkbox',
+	'eval'				=> array('tl_class'=>'w50'),
 );
 
 $GLOBALS['TL_DCA']['tl_content']['fields']['powerslide_background'] = array

@@ -67,6 +67,7 @@ class ContentPowerslideSetup extends ContentElement
 		$GLOBALS['TL_CSS'][] = 'system/modules/powerslide/html/powerslide_src.css';
 		
 		$GLOBALS['POWERSLIDE'][$this->pid]['buttons'] = $this->powerslide_buttons ? true : false;
+		$GLOBALS['POWERSLIDE'][$this->pid]['position'] = $this->powerslide_position ? true : false;
 		$GLOBALS['POWERSLIDE'][$this->pid]['orientation'] = $this->powerslide_orientation;
 		$GLOBALS['POWERSLIDE'][$this->pid]['interval'] = $this->powerslide_interval;
 		$GLOBALS['POWERSLIDE'][$this->pid]['speed'] = $this->powerslide_speed;
@@ -75,6 +76,7 @@ class ContentPowerslideSetup extends ContentElement
 		$GLOBALS['POWERSLIDE'][$this->pid]['navEvent'] = $this->powerslide_navEvent;
 		
 		$this->Template->buttons = $GLOBALS['POWERSLIDE'][$this->pid]['buttons'] ? true : false;
+		$this->Template->position = $GLOBALS['POWERSLIDE'][$this->pid]['position'] ? true : false;
 		
 		$arrSize = deserialize($this->powerslide_size, true);
 		$GLOBALS['POWERSLIDE'][$this->pid]['width'] = (int)$arrSize[0];

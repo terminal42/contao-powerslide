@@ -39,6 +39,7 @@ $GLOBALS['TL_LANG']['tl_content']['powerslide_ease']		= array('Ease', 'Select ea
 $GLOBALS['TL_LANG']['tl_content']['powerslide_size']		= array('Slider dimensions', 'Please enter the width & height of the slider container.');
 $GLOBALS['TL_LANG']['tl_content']['powerslide_navEvent']	= array('Preview action event', 'Choose if the slide will be loaded when clicking or hovering over the preview element.');
 $GLOBALS['TL_LANG']['tl_content']['powerslide_buttons']		= array('Show buttons', 'Check here to enable previous/next buttons.');
+$GLOBALS['TL_LANG']['tl_content']['powerslide_position']	= array('Show position', 'Check here to enable element numbers or positions.');
 $GLOBALS['TL_LANG']['tl_content']['powerslide_background']	= array('Background image', 'Each section can have a background image. Make sure it fits the slider!');
 
 

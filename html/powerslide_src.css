@@ -12,9 +12,9 @@
 	display: block;
 }
 
+.ce_powerslide_position,
 .ce_powerslide_previews {
 	position: absolute;
-	right: 0;
 }
 
 .ce_powerslide_preview {

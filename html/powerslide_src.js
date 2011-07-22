@@ -74,6 +74,7 @@ var PowerSlide = new Class({
 						self.direction = 0;
 						self.slideIt();
 					}
+					return false;
 				},
 				'mouseenter' : function() {
 					this.setStyle('cursor', 'pointer');
@@ -93,6 +94,7 @@ var PowerSlide = new Class({
 						self.direction = 1;
 						self.slideIt();
 					}
+					return false;
 				},
 				'mouseenter' : function() {
 					this.setStyle('cursor', 'pointer');
@@ -123,7 +125,7 @@ var PowerSlide = new Class({
 			// -- Number nav setup
 			if(self.options.numNavActive == true){
 				//create numbered navigation boxes, and insert into the 'num_nav' ul)
-				var numItem = new Element('li', {id: 'num'+i});
+				var numItem = new Element('li', {'class': 'num'+i});
 				var numLink = new Element('a', {
 					'class': 'numbtn',
 					'html': (i+1)

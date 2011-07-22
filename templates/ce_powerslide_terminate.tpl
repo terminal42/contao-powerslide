@@ -13,7 +13,9 @@ window.addEvent('domready', function() {
 		transitionTime: <?php echo $this->speed; ?>,
 		transitionType: '<?php echo $this->transition; ?>'<?php if($this->buttons): ?>,
 		prevBtn: document.getElement('#<?php echo $this->articleId; ?> .ce_powerslide_previous'),
-		nextBtn: document.getElement('#<?php echo $this->articleId; ?> .ce_powerslide_next')<?php endif; ?><?php if($this->previews): ?>,
+		nextBtn: document.getElement('#<?php echo $this->articleId; ?> .ce_powerslide_next')<?php endif; ?><?php if($this->position): ?>,
+		numNavActive: true,
+		numNavHolder: document.getElement('#<?php echo $this->articleId; ?> .ce_powerslide_position')<?php endif; ?><?php if($this->previews): ?>,
 		navItems: document.getElements('#<?php echo $this->articleId; ?> .ce_powerslide_preview'),
 		navEvent: '<?php echo $this->navEvent; ?>'<?php endif; ?>
 		

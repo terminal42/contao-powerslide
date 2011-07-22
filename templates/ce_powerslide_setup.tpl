@@ -4,3 +4,6 @@
 <a href="#" class="ce_powerslide_button ce_powerslide_next"><span>Next</span></a>
 <a href="#" class="ce_powerslide_button ce_powerslide_previous"><span>Previous</span></a>
 <?php endif; ?>
+<?php if($this->position): ?>
+<ul class="ce_powerslide_position"></ul>
+<?php endif; ?>
