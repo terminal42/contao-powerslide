@@ -1,4 +1,4 @@
-</div><?php if ($this->closeLink): ?></a><?php else: ?></div><?php endif; ?>
+</object><?php if ($this->closeLink): ?></a><?php else: ?></div><?php endif; ?>
 </div></div>
 
 <script type="text/javascript">
