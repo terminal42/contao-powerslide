@@ -5,7 +5,7 @@
 var PowerSlide = new Class({
 
 	//implements
-	Implements: [Options],	
+	Implements: [Options],
 	
 	//variables setup
 	numNav: new Array(),		    //will store number nav elements (if used)
@@ -51,7 +51,7 @@ var PowerSlide = new Class({
 			self.options.playBtn.addEvents({
 				'click': function() {
 					self.pauseIt();
-				},				
+				},
 				'mouseenter' : function() {
 					this.setStyle('cursor', 'pointer');
 				},
@@ -150,13 +150,25 @@ var PowerSlide = new Class({
 					initNum.addClass('active');
 				}
 			}
-			
 			//end if num nav 'active'
+
 			// -- Navigation items setup
-			else if(self.options.navItems && self.options.navItems[i]){self.options.navItems[i]
+			if(self.options.navItems && self.options.navItems[i]){
 				self.options.navItems[i].addEvent(self.options.navEvent, function(){
 					self.numPress(i);
 				});
+				
+				// -- Stop timer when hovering navigation items
+				if (i == 0){
+					self.options.navItems[i].getParent().addEvents({
+						'mouseenter' : function(){
+							self.pauseIt();
+						},
+						'mouseleave' : function(){
+							self.pauseIt();
+						}
+					});
+				}
 			}
 		 });
 	
@@ -197,11 +209,11 @@ var PowerSlide = new Class({
 		//check for passedID presence
 		if(passedID != null) {
 			if(self.options.itemNum != passedID){
-				if(self.options.itemNum > passedID) { 
-					self.direction = 0; 
-				} else { 
-					self.direction = 1;
-				}
+//				if(self.options.itemNum > passedID) { 
+//					self.direction = 0; 
+//				} else { 
+//					self.direction = 1;
+//				}
 				self.options.itemNum = passedID;
 			}
 		}
@@ -305,13 +317,15 @@ var PowerSlide = new Class({
 			if(self.options.isPaused == false){
 				self.options.isPaused = true;
 				$clear(self.timer);
-				self.options.playBtn.set('text', 'play');				
+				if(self.options.playBtn != null)
+					self.options.playBtn.set('text', 'play');				
 			}
 			else{
 				self.options.isPaused = false;
-				self.slideIt();
+//				self.slideIt();
 				self.timer = self.slideIt.periodical(self.options.slideTimer, this, null); 
-				self.options.playBtn.set('text', 'pause');
+				if(self.options.playBtn != null)
+					self.options.playBtn.set('text', 'pause');
 			}
 			
 		} //end if not sliding
