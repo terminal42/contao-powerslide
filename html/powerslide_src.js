@@ -161,11 +161,17 @@ var PowerSlide = new Class({
 				// -- Stop timer when hovering navigation items
 				if (i == 0){
 					self.options.navItems[i].getParent().addEvents({
-						'mouseenter' : function(){
-							self.pauseIt();
+						'mouseenter' : function() {
+							if (self.options.isPaused == false)
+							{
+								self.pauseIt();
+							}
 						},
-						'mouseleave' : function(){
-							self.pauseIt();
+						'mouseleave' : function() {
+							if (self.options.isPaused == true)
+							{
+								self.pauseIt();
+							}
 						}
 					});
 				}
@@ -313,7 +319,7 @@ var PowerSlide = new Class({
 		var self = this;
 		
 		//only move if not currently moving
-		if(self.isSliding == 0){
+//		if(self.isSliding == 0){
 			if(self.options.isPaused == false){
 				self.options.isPaused = true;
 				$clear(self.timer);
@@ -328,7 +334,7 @@ var PowerSlide = new Class({
 					self.options.playBtn.set('text', 'pause');
 			}
 			
-		} //end if not sliding
+//		} //end if not sliding
 		
 	},
 	
