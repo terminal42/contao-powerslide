@@ -62,8 +62,8 @@ var PowerSlide = new Class({
 		}
 		
 		//if there is a prev & next button, set up functionality for them
-		if(self.options.prevBtn && self.options.nextBtn){
-			
+		if(self.options.prevBtn && self.options.nextBtn)
+		{
 			self.options.prevBtn.addEvents({ 
 				'click' : function() {
 					if(self.isSliding == 0){
@@ -106,46 +106,59 @@ var PowerSlide = new Class({
 		}
 		
 		//setup items (a.k.a. slides) from list
-		self.options.items.each(function(el, i){
-			  
+		self.options.items.each(function(el, i)
+		{
 			//f.y.i.  el = the element, i = the index
 			el.setStyle('position', "absolute");
 			var itemH = el.getSize().y;
 			var itemW = el.getSize().x;
-			if(self.options.orientation == 'vertical'){ 
+			
+			if(self.options.orientation == 'vertical')
+			{
                 el.setStyle('top', (-1 * itemH));
                 el.setStyle('left', 0);
-            }else if(self.options.orientation == 'none') {
+            }
+            else if(self.options.orientation == 'none')
+            {
                 el.setStyle('left', 0);
                 el.setStyle('top', 0);
                 el.set('opacity', 0);
-			}else{
+			}
+			else
+			{
                 el.setStyle('left', (-1 * itemW));
             }
+            
 			// -- Number nav setup
-			if(self.options.numNavActive == true){
+			if (self.options.numNavActive == true)
+			{
 				//create numbered navigation boxes, and insert into the 'num_nav' ul)
 				var numItem = new Element('li', {'class': 'num'+i});
 				var numLink = new Element('a', {
 					'class': 'numbtn',
 					'html': (i+1)
 				});
+				
 				numItem.adopt(numLink);
 				self.options.numNavHolder.adopt(numItem);
 				self.numNav.push(numLink);
 				numLink.set('morph', {duration: 100, transition: Fx.Transitions.linear, link: 'ignore'});
 				
-				numLink.addEvents({
-					'click' : function(){
+				numLink.addEvents(
+				{
+					'click' : function()
+					{
 						self.numPress(i);
 					},
-					'mouseenter' : function() {
+					'mouseenter' : function()
+					{
 						this.setStyle('cursor', 'pointer');
 					}
 				});
 				
 				//set initial number to active state
-				if(i == self.options.itemNum){
+				if(i == self.options.itemNum)
+				{
 					var initNum = self.numNav[i];
 					initNum.addClass('active');
 				}
@@ -185,7 +198,11 @@ var PowerSlide = new Class({
 		
 		var self = this;
 		
-		self.slideIt(self.options.itemNum);  //initialize first slide
+		// Instead of sliding the first item in, we show it directly when starting
+		//self.slideIt(self.options.itemNum);  //initialize first slide
+		self.options.items[self.options.itemNum].setStyle('left', 0);
+		self.options.items[self.options.itemNum].setStyle('top', 0);
+		self.options.items[self.options.itemNum].setStyle('opacity', 1);
 		
 		if(self.options.isPaused == false){
 			self.timer = self.slideIt.periodical(self.options.slideTimer, self, null);
