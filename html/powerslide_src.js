@@ -170,27 +170,24 @@ var PowerSlide = new Class({
 				self.options.navItems[i].addEvent(self.options.navEvent, function(){
 					self.numPress(i);
 				});
-				
-				// -- Stop timer when hovering navigation items
-				if (i == 0){
-					self.options.navItems[i].getParent().addEvents({
-						'mouseenter' : function() {
-							if (self.options.isPaused == false)
-							{
-								self.pauseIt();
-							}
-						},
-						'mouseleave' : function() {
-							if (self.options.isPaused == true)
-							{
-								self.pauseIt();
-							}
-						}
-					});
-				}
 			}
 		 });
 	
+		// -- Stop timer when hovering slider
+		self.options.container.getParent().addEvents({
+			'mouseenter' : function() {
+				if (self.options.isPaused == false)
+				{
+					self.pauseIt();
+				}
+			},
+			'mouseleave' : function() {
+				if (self.options.isPaused == true)
+				{
+					self.pauseIt();
+				}
+			}
+		});
 	},
 
 	//startup method
@@ -199,10 +196,10 @@ var PowerSlide = new Class({
 		var self = this;
 		
 		// Instead of sliding the first item in, we show it directly when starting
-		//self.slideIt(self.options.itemNum);  //initialize first slide
 		self.options.items[self.options.itemNum].setStyle('left', 0);
 		self.options.items[self.options.itemNum].setStyle('top', 0);
 		self.options.items[self.options.itemNum].setStyle('opacity', 1);
+		self.slideIt(self.options.itemNum);  //initialize first slide
 		
 		if(self.options.isPaused == false){
 			self.timer = self.slideIt.periodical(self.options.slideTimer, self, null);
