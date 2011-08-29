@@ -2,7 +2,7 @@
 
 <?php if($this->openLink): ?>
 <a href="<?php echo $this->powerslide_url; ?>" class="<?php echo $this->class; ?> block"<?php echo $this->cssID; ?><?php if ($this->style): ?> style="<?php echo $this->style; ?>"<?php endif; ?><?php echo $this->powerslide_target; ?>>
-<object style="display:block">
+<object type="text/html" style="display:block">
 <?php else: ?>
 <div class="<?php echo $this->class; ?> block"<?php echo $this->cssID; ?><?php if ($this->style): ?> style="<?php echo $this->style; ?>"<?php endif; ?>>
 <?php endif; ?>

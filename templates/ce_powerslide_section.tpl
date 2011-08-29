@@ -5,4 +5,4 @@
 <?php else: ?>
 <div class="<?php echo $this->class; ?><?php echo $this->first ? ' first' : ''; ?><?php echo $this->last ? ' last' : ''; ?> block"<?php echo $this->cssID; ?> style="width:<?php echo $this->width; ?>px;height:<?php echo $this->height; ?>px;<?php echo $this->style; ?><?php echo $this->background; ?>">
 <?php endif; ?>
-<object class="powerslide_section_inside">
+<object type="text/html" class="powerslide_section_inside">
