@@ -2,7 +2,7 @@
 
 <?php if($this->openLink): ?>
 <a href="<?php echo $this->powerslide_url; ?>" class="<?php echo $this->class; ?> block"<?php echo $this->cssID; ?><?php if ($this->style): ?> style="<?php echo $this->style; ?>"<?php endif; ?><?php echo $this->powerslide_target; ?>>
-<object type="text/html" style="display:block">
+<div>
 <?php else: ?>
 <div class="<?php echo $this->class; ?> block"<?php echo $this->cssID; ?><?php if ($this->style): ?> style="<?php echo $this->style; ?>"<?php endif; ?>>
 <?php endif; ?>
@@ -34,4 +34,4 @@
 <?php echo $this->text; ?>
 <?php endif; ?>
 
-<?php if($this->openLink): ?></object></a><?php else: ?></div><?php endif; ?>
+<?php if($this->openLink): ?></div></a><?php else: ?></div><?php endif; ?>
