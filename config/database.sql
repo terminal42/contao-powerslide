@@ -24,5 +24,6 @@ CREATE TABLE `tl_content` (
   `powerslide_background` varchar(255) NOT NULL default '',
   `powerslide_url` varchar(255) NOT NULL default '',
   `powerslide_target` char(1) NOT NULL default '',
+  `powerslide_news` int(10) unsigned NOT NULL default '0',
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 

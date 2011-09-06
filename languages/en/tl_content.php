@@ -41,6 +41,7 @@ $GLOBALS['TL_LANG']['tl_content']['powerslide_navEvent']	= array('Preview action
 $GLOBALS['TL_LANG']['tl_content']['powerslide_buttons']		= array('Show buttons', 'Check here to enable previous/next buttons.');
 $GLOBALS['TL_LANG']['tl_content']['powerslide_position']	= array('Show position', 'Check here to enable element numbers or positions.');
 $GLOBALS['TL_LANG']['tl_content']['powerslide_background']	= array('Background image', 'Each section can have a background image. Make sure it fits the slider!');
+$GLOBALS['TL_LANG']['tl_content']['powerslide_news']		= array('News list module', 'Select the section source from preconfigured news list modules.');
 
 
 /**

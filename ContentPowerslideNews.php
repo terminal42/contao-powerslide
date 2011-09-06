@@ -28,12 +28,41 @@
  */
 
 
-/**
- * Content elements
- */
-$GLOBALS['TL_CTE']['powerslide']['powerslide_setup']		= 'ContentPowerslideSetup';
-$GLOBALS['TL_CTE']['powerslide']['powerslide_preview']		= 'ContentPowerslidePreview';
-$GLOBALS['TL_CTE']['powerslide']['powerslide_section']		= 'ContentPowerslideSection';
-$GLOBALS['TL_CTE']['powerslide']['powerslide_news']			= 'ContentPowerslideNews';
-$GLOBALS['TL_CTE']['powerslide']['powerslide_terminate']	= 'ContentPowerslideTerminate';
+
+class ContentPowerslideNews extends ContentElement
+{
+	
+	public function generate()
+	{
+		if (TL_MODE == 'BE')
+		{
+			$objTemplate = new BackendTemplate('be_wildcard');
+			$objTemplate->wildcard = '### POWERSLIDE - NEWS SECTIONS '.++$GLOBALS['POWERSLIDE'][$this->pid]['sections'].' ###';
+			return $objTemplate->parse();
+		}
+		
+		$objContent = $this->Database->execute("SELECT * FROM tl_content WHERE id=".$this->id);
+		$arrCSS = deserialize($this->cssID);
+		$arrCSS[1] = trim($arrCSS[1] . ' ce_powerslide_section');
+		$objContent->cssID = $arrCSS;
+		
+		$objModule = new ModuleNewsList($this->Database->execute("SELECT * FROM tl_module WHERE id=".(int)$this->powerslide_news), $this->inColumn);
+		$objModule->generate();
+		
+		$strBuffer = '';
+		$arrArticles = $objModule->Template->articles;
+		
+		foreach( $arrArticles as $strArticle )
+		{
+			$objSection = new ContentPowerslideSection($objContent);
+			$strBuffer .= $objSection->generate();
+			$strBuffer .= $strArticle;
+		}
+		
+		return $strBuffer;
+	}
+	
+	
+	protected function compile(){}
+}
 

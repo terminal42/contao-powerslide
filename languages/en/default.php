@@ -35,5 +35,6 @@ $GLOBALS['TL_LANG']['CTE']['powerslide']			= 'Power Slide';
 $GLOBALS['TL_LANG']['CTE']['powerslide_setup']		= array('Power Slide - Setup');
 $GLOBALS['TL_LANG']['CTE']['powerslide_preview']	= array('Power Slide - Preview');
 $GLOBALS['TL_LANG']['CTE']['powerslide_section']	= array('Power Slide - Section');
+$GLOBALS['TL_LANG']['CTE']['powerslide_news']		= array('Power Slide - News Sections');
 $GLOBALS['TL_LANG']['CTE']['powerslide_terminate']	= array('Power Slide - Terminate');
 

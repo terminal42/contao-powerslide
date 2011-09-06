@@ -40,6 +40,7 @@ $GLOBALS['TL_DCA']['tl_content']['config']['onload_callback'][] = array('tl_cont
 $GLOBALS['TL_DCA']['tl_content']['palettes']['powerslide_setup']		= '{type_legend},type;{powerslide_legend},powerslide_size,powerslide_orientation,powerslide_interval,powerslide_speed,powerslide_transition,powerslide_ease,powerslide_navEvent,powerslide_buttons,powerslide_position;{protected_legend:hide},protected;{expert_legend:hide},guests,cssID,space';
 $GLOBALS['TL_DCA']['tl_content']['palettes']['powerslide_preview']		= '{type_legend},type,headline;{text_legend},text;{image_legend},addImage;{link_legend:hide},powerslide_url,powerslide_target;{protected_legend:hide},protected;{expert_legend:hide},guests,cssID,space';
 $GLOBALS['TL_DCA']['tl_content']['palettes']['powerslide_section']		= '{type_legend},type;{image_legend},powerslide_background;{link_legend:hide},powerslide_url,powerslide_target;{protected_legend:hide},protected;{expert_legend:hide},guests,cssID,space';
+$GLOBALS['TL_DCA']['tl_content']['palettes']['powerslide_news']			= '{type_legend},type;{include_legend},powerslide_news;{protected_legend:hide},protected;{expert_legend:hide},guests,cssID,space';
 $GLOBALS['TL_DCA']['tl_content']['palettes']['powerslide_terminate']	= '{type_legend},type;{protected_legend:hide},protected;{expert_legend:hide},guests,cssID,space';
 
 
@@ -137,11 +138,11 @@ $GLOBALS['TL_DCA']['tl_content']['fields']['powerslide_background'] = array
 
 $GLOBALS['TL_DCA']['tl_content']['fields']['powerslide_url'] = array
 (
-	'label'                   => &$GLOBALS['TL_LANG']['MSC']['url'],
-	'exclude'                 => true,
-	'search'                  => true,
-	'inputType'               => 'text',
-	'eval'                    => array('rgxp'=>'url', 'decodeEntities'=>true, 'maxlength'=>255, 'tl_class'=>'w50 wizard'),
+	'label'				=> &$GLOBALS['TL_LANG']['MSC']['url'],
+	'exclude'			=> true,
+	'search'			=> true,
+	'inputType'			=> 'text',
+	'eval'				=> array('rgxp'=>'url', 'decodeEntities'=>true, 'maxlength'=>255, 'tl_class'=>'w50 wizard'),
 	'wizard' => array
 	(
 		array('tl_content', 'pagePicker')
@@ -150,11 +151,21 @@ $GLOBALS['TL_DCA']['tl_content']['fields']['powerslide_url'] = array
 
 $GLOBALS['TL_DCA']['tl_content']['fields']['powerslide_target'] = array
 (
-	'label'                   => &$GLOBALS['TL_LANG']['MSC']['target'],
-	'exclude'                 => true,
-	'inputType'               => 'checkbox',
-	'eval'                    => array('tl_class'=>'w50 m12')
+	'label'				=> &$GLOBALS['TL_LANG']['MSC']['target'],
+	'exclude'			=> true,
+	'inputType'			=> 'checkbox',
+	'eval'				=> array('tl_class'=>'w50 m12')
 );
+
+$GLOBALS['TL_DCA']['tl_content']['fields']['powerslide_news'] = array
+(
+	'label'				=> &$GLOBALS['TL_LANG']['tl_content']['powerslide_news'],
+	'exclude'			=> true,
+	'inputType'			=> 'select',
+	'options_callback'	=> array('tl_content_powerslide', 'getNewsModules'),
+	'eval'				=> array('mandatory'=>true, 'includeBlankOption'=>true, 'tl_class'=>'w50')
+);
+
 
 
 class tl_content_powerslide extends Backend
@@ -171,6 +182,27 @@ class tl_content_powerslide extends Backend
 		{
 			$GLOBALS['TL_DCA']['tl_content']['palettes']['powerslide_preview'] = str_replace('{link_legend:hide},powerslide_url,powerslide_target;', '', $GLOBALS['TL_DCA']['tl_content']['palettes']['powerslide_preview']);
 		}
+	}
+	
+	
+	/**
+	 * Return all news list modules
+	 *
+	 * @param	DataContainer
+	 * @return	array
+	 * @link	http://www.contao.org/callbacks.html#options_callback
+	 */
+	public function getNewsModules($dc)
+	{
+		$arrModules = array();
+		$objModules = $this->Database->execute("SELECT * FROM tl_module WHERE type='newslist'");
+		
+		while( $objModules->next() )
+		{
+			$arrModules[$objModules->id] = $objModules->name;
+		}
+		
+		return $arrModules;
 	}
 }
 
