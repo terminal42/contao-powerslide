@@ -54,31 +54,37 @@ class ContentPowerslideTerminate extends ContentElement
 	
 	protected function compile()
 	{
+		$this->Template->enableSlider = false;
 		$this->Template->closeLink = $GLOBALS['POWERSLIDE'][$this->pid]['sectionLink'] ? true : false;
 		$this->Template->previews = $GLOBALS['POWERSLIDE'][$this->pid]['previews'] > 0 ? true : false;
-		$this->Template->articleId = $GLOBALS['POWERSLIDE'][$this->pid]['id'];
-		$this->Template->buttons = $GLOBALS['POWERSLIDE'][$this->pid]['buttons'];
-		$this->Template->position = $GLOBALS['POWERSLIDE'][$this->pid]['position'];
-		$this->Template->transition = $GLOBALS['POWERSLIDE'][$this->pid]['transition'] . ($GLOBALS['POWERSLIDE'][$this->pid]['ease'] ? (':'.$GLOBALS['POWERSLIDE'][$this->pid]['ease']) : '');
-		$this->Template->interval = $GLOBALS['POWERSLIDE'][$this->pid]['interval'];
-		$this->Template->speed = $GLOBALS['POWERSLIDE'][$this->pid]['speed'];
-		$this->Template->navEvent = $GLOBALS['POWERSLIDE'][$this->pid]['navEvent'];
-		$this->Template->sliderId = $this->pid;
 		
-		switch( $GLOBALS['POWERSLIDE'][$this->pid]['orientation'] )
+		if ($GLOBALS['POWERSLIDE'][$this->pid]['sections'] > 1)
 		{
-			case 'fade':
-				$this->Template->orientation = 'none';
-				break;
-				
-			case 'bottom-to-top':
-				$this->Template->orientation = 'vertical';
-				break;
-				
-			case 'right-to-left':
-			default:
-				$this->Template->orientation = 'horizontal';
-				break;
+			$this->Template->enableSlider = true;
+			$this->Template->articleId = $GLOBALS['POWERSLIDE'][$this->pid]['id'];
+			$this->Template->buttons = $GLOBALS['POWERSLIDE'][$this->pid]['buttons'];
+			$this->Template->position = $GLOBALS['POWERSLIDE'][$this->pid]['position'];
+			$this->Template->transition = $GLOBALS['POWERSLIDE'][$this->pid]['transition'] . ($GLOBALS['POWERSLIDE'][$this->pid]['ease'] ? (':'.$GLOBALS['POWERSLIDE'][$this->pid]['ease']) : '');
+			$this->Template->interval = $GLOBALS['POWERSLIDE'][$this->pid]['interval'];
+			$this->Template->speed = $GLOBALS['POWERSLIDE'][$this->pid]['speed'];
+			$this->Template->navEvent = $GLOBALS['POWERSLIDE'][$this->pid]['navEvent'];
+			$this->Template->sliderId = $this->pid;
+		
+			switch( $GLOBALS['POWERSLIDE'][$this->pid]['orientation'] )
+			{
+				case 'fade':
+					$this->Template->orientation = 'none';
+					break;
+					
+				case 'bottom-to-top':
+					$this->Template->orientation = 'vertical';
+					break;
+					
+				case 'right-to-left':
+				default:
+					$this->Template->orientation = 'horizontal';
+					break;
+			}
 		}
 	}
 }

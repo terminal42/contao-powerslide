@@ -84,24 +84,16 @@ var PowerSlide = new Class({
 				}
 			});	
 			
-			this.options.nextBtn.addEvents({ 
-				'click' : function() {
-					if(self.isSliding == 0){
-						if(self.options.isPaused == false){
-							$clear(self.timer);
-							self.timer = self.slideIt.periodical(self.options.slideTimer, self, null);
-						}
-						self.direction = 1;
-						self.slideIt();
+			this.options.nextBtn.addEvent('click', function() {
+				if(self.isSliding == 0){
+					if(self.options.isPaused == false){
+						$clear(self.timer);
+						self.timer = self.slideIt.periodical(self.options.slideTimer, self, null);
 					}
-					return false;
-				},
-				'mouseenter' : function() {
-					this.setStyle('cursor', 'pointer');
-				},
-				'mouseleave' : function() {
-					
+					self.direction = 1;
+					self.slideIt();
 				}
+				return false;
 			});	
 		}
 		
@@ -199,7 +191,10 @@ var PowerSlide = new Class({
 		self.options.items[self.options.itemNum].setStyle('left', 0);
 		self.options.items[self.options.itemNum].setStyle('top', 0);
 		self.options.items[self.options.itemNum].setStyle('opacity', 1);
-		self.slideIt(self.options.itemNum);  //initialize first slide
+//		self.slideIt(self.options.itemNum);  //initialize first slide
+
+		if (self.options.slideTimer == 0)
+			return;
 		
 		if(self.options.isPaused == false){
 			self.timer = self.slideIt.periodical(self.options.slideTimer, self, null);
