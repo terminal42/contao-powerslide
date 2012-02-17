@@ -114,7 +114,7 @@ var PowerSlide = new Class({
             {
                 el.setStyle('left', 0);
                 el.setStyle('top', 0);
-                el.set('opacity', 0);
+                el.setStyle('opacity', 0);
 			}
 			else
 			{
