@@ -191,7 +191,7 @@ var PowerSlide = new Class({
 		self.options.items[self.options.itemNum].setStyle('left', 0);
 		self.options.items[self.options.itemNum].setStyle('top', 0);
 		self.options.items[self.options.itemNum].setStyle('opacity', 1);
-//		self.slideIt(self.options.itemNum);  //initialize first slide
+		self.slideIt(self.options.itemNum);  //initialize first slide
 
 		if (self.options.slideTimer == 0)
 			return;
