@@ -41,14 +41,20 @@ class ContentPowerslideSection extends ContentElement
 	
 	public function generate()
 	{
-		++$GLOBALS['POWERSLIDE'][$this->pid]['sections'];
-		
 		if (TL_MODE == 'BE')
 		{
 			$objTemplate = new BackendTemplate('be_wildcard');
-			$objTemplate->wildcard = '### POWERSLIDE - SECTION ' . $GLOBALS['POWERSLIDE'][$this->pid]['sections'] . ' ###';
+			$objTemplate->wildcard = '### POWERSLIDE - SECTION ' . ++$GLOBALS['POWERSLIDE'][$this->pid]['sections'] . ' ###';
 			return $objTemplate->parse();
 		}
+		
+		$time = time();
+		if (($this->start > 0 && $this->start > $time) || ($this->stop > 0 && $this->stop < $time))
+		{
+			return '';
+		}
+
+		++$GLOBALS['POWERSLIDE'][$this->pid]['sections'];
 		
 		$strBuffer = parent::generate();
 		

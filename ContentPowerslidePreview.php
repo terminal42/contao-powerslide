@@ -41,17 +41,23 @@ class ContentPowerslidePreview extends ContentText
 	
 	public function generate()
 	{
-		++$GLOBALS['POWERSLIDE'][$this->pid]['previews'];
-		
 		if (TL_MODE == 'BE')
 		{
 			$objTemplate = new BackendTemplate('be_wildcard');
-			$objTemplate->wildcard = '### POWERSLIDE PREVIEW ' . $GLOBALS['POWERSLIDE'][$this->pid]['previews'] . ' ###';
+			$objTemplate->wildcard = '### POWERSLIDE PREVIEW ' . ++$GLOBALS['POWERSLIDE'][$this->pid]['previews'] . ' ###';
 			return $objTemplate->parse();
 		}
 		
-		$strBuffer = parent::generate();
+		$time = time();
+		if (($this->start > 0 && $this->start > $time) || ($this->stop > 0 && $this->stop < $time))
+		{
+			return '';
+		}
 		
+		++$GLOBALS['POWERSLIDE'][$this->pid]['previews'];
+		
+		$strBuffer = parent::generate();
+
 		// Start the preview container
 		if ($GLOBALS['POWERSLIDE'][$this->pid]['previews'] == 1)
 		{

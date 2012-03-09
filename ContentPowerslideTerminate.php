@@ -48,6 +48,12 @@ class ContentPowerslideTerminate extends ContentElement
 			return $objTemplate->parse();
 		}
 		
+		$time = time();
+		if (($this->start > 0 && $this->start > $time) || ($this->stop > 0 && $this->stop < $time))
+		{
+			return '';
+		}
+		
 		return parent::generate();
 	}
 	

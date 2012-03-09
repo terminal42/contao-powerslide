@@ -41,6 +41,14 @@ class ContentPowerslideNews extends ContentElement
 			return $objTemplate->parse();
 		}
 		
+		$time = time();
+		if (($this->start > 0 && $this->start > $time) || ($this->stop > 0 && $this->stop < $time))
+		{
+			return '';
+		}
+		
+		++$GLOBALS['POWERSLIDE'][$this->pid]['sections'];
+		
 		$objContent = $this->Database->execute("SELECT * FROM tl_content WHERE id=".$this->id);
 		$arrCSS = deserialize($this->cssID);
 		$arrCSS[1] = trim($arrCSS[1] . ' ce_powerslide_section');

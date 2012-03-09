@@ -48,7 +48,15 @@ class ContentPowerslideSetup extends ContentElement
 			return $objTemplate->parse();
 		}
 		
-		$objArticle = $this->Database->execute("SELECT tl_article.*, COUNT(tl_content.id) AS sections FROM tl_content LEFT JOIN tl_article ON tl_content.pid=tl_article.id WHERE tl_content.type='powerslide_section' AND tl_content.pid={$this->pid} GROUP BY tl_content.pid");
+		$time = time();
+		if (($this->start > 0 && $this->start > $time) || ($this->stop > 0 && $this->stop < $time))
+		{
+			return '';
+		}
+		
+		$blnStartStop = in_array('ce_startstop', $this->Config->getActiveModules());
+		
+		$objArticle = $this->Database->execute("SELECT a.*, COUNT(c.id) AS sections FROM tl_content c LEFT JOIN tl_article a ON c.pid=a.id WHERE c.type='powerslide_section' AND c.pid={$this->pid}" . ($blnStartStop ? " AND (c.start='' OR c.start<$time) AND (c.stop='' OR c.stop>$time)" : '') . " GROUP BY c.pid");
 		
 		$cssID = deserialize($objArticle->cssID, true);
 		$GLOBALS['POWERSLIDE'][$this->pid]['id'] = $cssID[0] != '' ? $cssID[0] : $objArticle->alias;
