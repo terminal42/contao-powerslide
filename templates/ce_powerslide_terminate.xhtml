@@ -6,7 +6,7 @@
 <!--//--><![CDATA[//><!--
     var powerslide<?php echo $this->sliderId; ?>;
     window.addEvent('domready', function() {
-        var powerslideContainer = document.getElement('.ce_powerslide_container');
+        var powerslideContainer = document.getElement('#<?php echo $this->articleId; ?> .ce_powerslide_container');
         powerslide<?php echo $this->sliderId; ?> = new PowerSlide({
             container: powerslideContainer,
             items: document.getElements('.ce_powerslide_section'),
