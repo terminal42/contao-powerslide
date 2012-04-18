@@ -8,26 +8,27 @@ var PowerSlide = new Class({
 	Implements: [Options],
 	
 	//variables setup
-	numNav: new Array(),		    //will store number nav elements (if used)
+	numNav: [],						//will store number nav elements (if used)
 	timer: null,					//periodical function variable holder
 	isSliding: 0,					//flag for animation/click prevention
 	direction: 1,					//flag for direction (forward/reverse)
 	
 	//options
 	options: {
-		slideTimer: 8000,  			    //Time between slides (1 second = 1000), a.k.a. the interval duration
-		orientation: 'horizontal',      //vertical, horizontal, or none: None will create a fading in/out transition.
-		fade: false,                    //if true will fade the outgoing slide - only used if orientation is != None
+		slideTimer: 8000,				//Time between slides (1 second = 1000), a.k.a. the interval duration
+		orientation: 'horizontal',		//vertical, horizontal, or none: None will create a fading in/out transition.
+		fade: false,					//if true will fade the outgoing slide - only used if orientation is != None
+		random: false,
 		isPaused: false,				//flag for paused state
-		transitionTime: 1100, 		    //Transition time (1 second = 1000)
+		transitionTime: 1100,			//Transition time (1 second = 1000)
 		transitionType: 'cubic:out',	//Transition type
 		container: null,				//container element
-		items:  null, 					//Array of elements for sliding
+		items: null,					//Array of elements for sliding
 		itemNum: 0,						//Current item number
 		navItems: null,
 		navEvent: 'click',
 		numNavActive: false,			//Whether or not the number navigation will be used
-		numNavHolder: null,			    //Element that holds the number navigation
+		numNavHolder: null,				//Element that holds the number navigation
 		playBtn: null,					//Play (and pause) button element
 		prevBtn: null,					//Previous button element
 		nextBtn: null					//Next button element
@@ -350,10 +351,20 @@ var PowerSlide = new Class({
 	changeIndex: function() {
 		var self = this; 
 		
-		var numItems = self.options.items.length;  //get number of slider items
+		var numItems = self.options.items.length,   //get number of slider items
+			newItem = self.options.itemNum;
 		
+		if (self.options.random && numItems > 1){
+			do
+			{
+				newItem = Math.floor((Math.random()*numItems));
+			}
+			while(newItem == self.options.itemNum)
+
+			self.options.itemNum = newItem;
+		}
 		//change index based on value of 'direction' parameter
-		if(self.direction == 1){
+		else if(self.direction == 1){
 			if(self.options.itemNum < (numItems - 1)){
 				self.options.itemNum++; 
 			}

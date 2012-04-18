@@ -60,7 +60,7 @@ $GLOBALS['TL_DCA']['tl_content']['fields']['powerslide_orientation'] = array
 	'label'				=> &$GLOBALS['TL_LANG']['tl_content']['powerslide_orientation'],
 	'exclude'			=> true,
 	'inputType'			=> 'select',
-	'options'			=> array('right-to-left', 'bottom-to-top', 'fade'),
+	'options'			=> array('right-to-left', 'bottom-to-top', 'fade', 'randomfade'),
 	'reference'			=> &$GLOBALS['TL_LANG']['tl_content']['powerslide_orientation'],
 	'eval'				=> array('mandatory'=>true, 'tl_class'=>'w50'),
 );

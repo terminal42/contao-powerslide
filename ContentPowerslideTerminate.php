@@ -82,6 +82,11 @@ class ContentPowerslideTerminate extends ContentElement
 					$this->Template->orientation = 'none';
 					break;
 					
+				case 'randomfade':
+					$this->Template->orientation = 'none';
+					$this->Template->random = true;
+					break;
+				
 				case 'bottom-to-top':
 					$this->Template->orientation = 'vertical';
 					break;

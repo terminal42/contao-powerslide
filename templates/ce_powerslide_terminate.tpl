@@ -11,7 +11,8 @@
     powerslide<?php echo $this->sliderId; ?> = new PowerSlide({
         container: powerslideContainer,
         items: document.getElements('.ce_powerslide_section'),
-        orientation: '<?php echo $this->orientation; ?>',
+        orientation: '<?php echo $this->orientation; ?>',<?php if($this->random): ?>
+            random: true,<?php endif; ?>
         slideTimer: <?php echo $this->interval; ?>,
         transitionTime: <?php echo $this->speed; ?>,
         transitionType: '<?php echo $this->transition; ?>'<?php if($this->buttons): ?>,
