@@ -113,9 +113,12 @@ var PowerSlide = new Class({
             }
             else if(self.options.orientation == 'none')
             {
-                el.setStyle('left', 0);
-                el.setStyle('top', 0);
-                el.setStyle('opacity', 0);
+                el.setStyles({
+                	'left': 0,
+                	'top': 0,
+                	'opacity': 0,
+                	'display': 'none'
+                });
 			}
 			else
 			{
