@@ -38,6 +38,7 @@ class ContentPowerslideNews extends ContentElement
 		{
 			$objTemplate = new BackendTemplate('be_wildcard');
 			$objTemplate->wildcard = '### POWERSLIDE - NEWS SECTIONS '.++$GLOBALS['POWERSLIDE'][$this->pid]['sections'].' ###';
+			$objTemplate->title = $this->headline;
 			return $objTemplate->parse();
 		}
 		

@@ -45,6 +45,7 @@ class ContentPowerslidePreview extends ContentText
 		{
 			$objTemplate = new BackendTemplate('be_wildcard');
 			$objTemplate->wildcard = '### POWERSLIDE PREVIEW ' . ++$GLOBALS['POWERSLIDE'][$this->pid]['previews'] . ' ###';
+			$objTemplate->title = $this->headline;
 			return $objTemplate->parse();
 		}
 		

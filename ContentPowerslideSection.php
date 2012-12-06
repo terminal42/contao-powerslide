@@ -45,6 +45,7 @@ class ContentPowerslideSection extends ContentElement
 		{
 			$objTemplate = new BackendTemplate('be_wildcard');
 			$objTemplate->wildcard = '### POWERSLIDE - SECTION ' . ++$GLOBALS['POWERSLIDE'][$this->pid]['sections'] . ' ###';
+			$objTemplate->title = $this->headline;
 			return $objTemplate->parse();
 		}
 		

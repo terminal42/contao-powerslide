@@ -39,8 +39,8 @@ $GLOBALS['TL_DCA']['tl_content']['config']['onload_callback'][] = array('tl_cont
  */
 $GLOBALS['TL_DCA']['tl_content']['palettes']['powerslide_setup']		= '{type_legend},type;{powerslide_legend},powerslide_size,powerslide_orientation,powerslide_interval,powerslide_speed,powerslide_transition,powerslide_ease,powerslide_navEvent,powerslide_buttons,powerslide_position;{protected_legend:hide},protected;{expert_legend:hide},guests,start,stop,cssID,space';
 $GLOBALS['TL_DCA']['tl_content']['palettes']['powerslide_preview']		= '{type_legend},type,headline;{text_legend},text;{image_legend},addImage;{link_legend:hide},powerslide_url,powerslide_target;{protected_legend:hide},protected;{expert_legend:hide},guests,start,stop,cssID,space';
-$GLOBALS['TL_DCA']['tl_content']['palettes']['powerslide_section']		= '{type_legend},type;{image_legend},powerslide_background;{link_legend:hide},powerslide_url,powerslide_target;{protected_legend:hide},protected;{expert_legend:hide},guests,start,stop,cssID,space';
-$GLOBALS['TL_DCA']['tl_content']['palettes']['powerslide_news']			= '{type_legend},type;{include_legend},powerslide_news;{protected_legend:hide},protected;{expert_legend:hide},guests,start,stop,cssID,space';
+$GLOBALS['TL_DCA']['tl_content']['palettes']['powerslide_section']		= '{type_legend},type,headline;{image_legend},powerslide_background;{link_legend:hide},powerslide_url,powerslide_target;{protected_legend:hide},protected;{expert_legend:hide},guests,start,stop,cssID,space';
+$GLOBALS['TL_DCA']['tl_content']['palettes']['powerslide_news']			= '{type_legend},type,headline;{include_legend},powerslide_news;{protected_legend:hide},protected;{expert_legend:hide},guests,start,stop,cssID,space';
 $GLOBALS['TL_DCA']['tl_content']['palettes']['powerslide_terminate']	= '{type_legend},type;{protected_legend:hide},protected;{expert_legend:hide},guests,start,stop,cssID,space';
 
 
