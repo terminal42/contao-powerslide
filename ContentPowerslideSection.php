@@ -100,9 +100,23 @@ class ContentPowerslideSection extends ContentElement
 			$this->Template->last = true;
 		}
 		
-		if (is_file(TL_ROOT . '/' . $this->powerslide_background))
+		// Get the background image in Contao 3
+		if (version_compare(VERSION, '3.0', '>='))
 		{
-			$this->Template->background = ('background-image:url(' . $this->powerslide_background . ');');
+			$objImage = \FilesModel::findByPk($this->powerslide_background);
+
+			if ($objImage !== null && is_file(TL_ROOT . '/' . $objImage->path))
+			{
+				$this->Template->background = ('background-image:url(' . $objImage->path . ');');
+			}
+		}
+		// Get the background image in Contao 2
+		else
+		{
+			if (is_file(TL_ROOT . '/' . $this->powerslide_background))
+			{
+				$this->Template->background = ('background-image:url(' . $this->powerslide_background . ');');
+			}
 		}
 		
 		// Override the link target
