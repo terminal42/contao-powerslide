@@ -70,9 +70,9 @@ class ContentPowerslideSetup extends ContentElement
 	
 	protected function compile()
 	{
-		$GLOBALS['TL_JAVASCRIPT'][] = 'system/modules/powerslide/html/powerslide_src.js';
-		$GLOBALS['TL_JAVASCRIPT'][] = 'system/modules/powerslide/html/MooSwipe_src.js';
-		$GLOBALS['TL_CSS'][] = 'system/modules/powerslide/html/powerslide_src.css';
+		$GLOBALS['TL_JAVASCRIPT'][] = 'system/modules/powerslide/assets/powerslide_src.js';
+		$GLOBALS['TL_JAVASCRIPT'][] = 'system/modules/powerslide/assets/MooSwipe_src.js';
+		$GLOBALS['TL_CSS'][] = 'system/modules/powerslide/assets/powerslide_src.css';
 		
 		$GLOBALS['POWERSLIDE'][$this->pid]['buttons'] = $this->powerslide_buttons ? true : false;
 		$GLOBALS['POWERSLIDE'][$this->pid]['position'] = $this->powerslide_position ? true : false;
