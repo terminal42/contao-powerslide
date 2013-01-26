@@ -29,11 +29,26 @@
 
 
 /**
- * Content elements
+ * Register the classes
  */
-$GLOBALS['TL_CTE']['powerslide']['powerslide_setup']		= 'ContentPowerslideSetup';
-$GLOBALS['TL_CTE']['powerslide']['powerslide_preview']		= 'ContentPowerslidePreview';
-$GLOBALS['TL_CTE']['powerslide']['powerslide_section']		= 'ContentPowerslideSection';
-$GLOBALS['TL_CTE']['powerslide']['powerslide_news']			= 'ContentPowerslideNews';
-$GLOBALS['TL_CTE']['powerslide']['powerslide_terminate']	= 'ContentPowerslideTerminate';
+ClassLoader::addClasses(array
+(
+	'ContentPowerslideSetup'     => 'system/modules/powerslide/ContentPowerslideSetup.php',
+	'ContentPowerslidePreview'   => 'system/modules/powerslide/ContentPowerslidePreview.php',
+	'ContentPowerslideSection'   => 'system/modules/powerslide/ContentPowerslideSection.php',
+	'ContentPowerslideNews'      => 'system/modules/powerslide/ContentPowerslideNews.php',
+	'ContentPowerslideTerminate' => 'system/modules/powerslide/ContentPowerslideTerminate.php'
+));
+
+
+/**
+ * Register the templates
+ */
+TemplateLoader::addFiles(array
+(
+	'ce_powerslide_preview'   => 'system/modules/powerslide/templates',
+	'ce_powerslide_section'   => 'system/modules/powerslide/templates',
+	'ce_powerslide_setup'     => 'system/modules/powerslide/templates',
+	'ce_powerslide_terminate' => 'system/modules/powerslide/templates'
+));
 
