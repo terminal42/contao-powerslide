@@ -175,6 +175,11 @@ class tl_content_powerslide extends Backend
 	 */
 	public function hidePreviewUrl($dc)
 	{
+		if (!$dc->id)
+		{
+			return;
+		}
+
 		$objSetup = $this->Database->execute("SELECT * FROM tl_content WHERE type='powerslide_setup' AND pid=(SELECT pid FROM tl_content WHERE id={$dc->id})");
 		
 		if ($objSetup->numRows && $objSetup->powerslide_navEvent == 'click')
