@@ -6,6 +6,7 @@
 	display: block;
 	position: absolute;
 	text-indent: -999em;
+    cursor: pointer;
 }
 
 .ce_powerslide_button span {

@@ -69,16 +69,13 @@ var PowerSlide = new Class({
 				'click' : function() {
 					if(self.isSliding == 0){
 						if(self.options.isPaused == false){
-							$clear(self.timer);
+                            clearTimeout(self.timer);
 							self.timer = self.slideIt.periodical(self.options.slideTimer, self, null);
 						}
 						self.direction = 0;
 						self.slideIt();
 					}
 					return false;
-				},
-				'mouseenter' : function() {
-					this.setStyle('cursor', 'pointer');
 				},
 				'mouseleave' : function() {
 
@@ -88,7 +85,7 @@ var PowerSlide = new Class({
 			this.options.nextBtn.addEvent('click', function() {
 				if(self.isSliding == 0){
 					if(self.options.isPaused == false){
-						$clear(self.timer);
+                        clearTimeout(self.timer);
 						self.timer = self.slideIt.periodical(self.options.slideTimer, self, null);
 					}
 					self.direction = 1;
@@ -340,7 +337,7 @@ var PowerSlide = new Class({
 //		if(self.isSliding == 0){
 			if(self.options.isPaused == false){
 				self.options.isPaused = true;
-				$clear(self.timer);
+                clearTimeout(self.timer);
 				if(self.options.playBtn != null)
 					self.options.playBtn.set('text', 'play');
 			}
@@ -396,7 +393,7 @@ var PowerSlide = new Class({
 
 		if((self.isSliding == 0) && (self.options.itemNum != theIndex)){
 			if(self.options.isPaused == false){
-				$clear(self.timer);
+                clearTimeout(self.timer);
 				self.timer = self.slideIt.periodical(self.options.slideTimer, this, null);
 			}
 			self.slideIt(theIndex);
