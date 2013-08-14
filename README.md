@@ -1,7 +1,6 @@
 PowerSlide
 ==============
 
-By Andreas Schempp, www.terminal42.ch
 
 THE powerful Contao slider
 ----------------------------------------------------------
@@ -135,7 +134,7 @@ Let's use the simple example at the beginning of this document with two "Preview
 
 As you can see, after both images there's now a "Preview" element. If you open a "Power Slide - Preview" element you'll see that there are options for adding text and images. 
 
-The preview element will be generated accordingly and will have the javascript events that make it work like an additional button that focuses the according page of the slider.
+The preview element will be generated accordingly on the front-end and will have the javascript events that make it work as an additional button that focuses on the chosen page of the slider.
 
 
 Sliding News 
@@ -153,4 +152,5 @@ All you have to do is create a "Power Slide - News Sections" content element, se
 [Power Slide - News Sections]
 
 [Power Slide - Terminate]  
+
 
