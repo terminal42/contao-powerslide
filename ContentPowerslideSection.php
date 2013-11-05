@@ -107,7 +107,7 @@ class ContentPowerslideSection extends ContentElement
 
 			if ($objImage !== null && is_file(TL_ROOT . '/' . $objImage->path))
 			{
-				$this->Template->background = ('background-image:url(' . $objImage->path . ');');
+				$this->Template->background = ('background-image:url(\'' . $objImage->path . '\');');
 			}
 		}
 		// Get the background image in Contao 2
@@ -115,7 +115,7 @@ class ContentPowerslideSection extends ContentElement
 		{
 			if (is_file(TL_ROOT . '/' . $this->powerslide_background))
 			{
-				$this->Template->background = ('background-image:url(' . $this->powerslide_background . ');');
+				$this->Template->background = ('background-image:url(\'' . $this->powerslide_background . '\');');
 			}
 		}
 		
